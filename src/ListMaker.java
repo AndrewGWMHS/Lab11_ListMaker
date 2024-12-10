@@ -9,26 +9,23 @@ public class ListMaker {
         boolean playAgain = true;
 
         fruit.addAll(Arrays.asList("Apple", "Banana", "Pear", "Strawberry", "Blueberry", "Grape", "Peach", "Pineapple", "Orange", "Melon", "Mango", "Kiwi", "Coconut", "Cherry", "Apricot", "Lemon"));
-
+        printList(fruit);
         do {
-            printList(fruit);
-            String menu = InputHelper.getRegExString(scan, "Options:  A  -  Add an item to the list    D  - Delete an item from the list     P  -  Print the list    Q  -   Quit the program", "[AaDdPpQq]");
-            switch (menu) {
-                case "A":
-                    addList(scan, fruit);
-                    break;
-                case "D":
-                    deleteList(scan, fruit);
-                    break;
-                case "P":
-                    printList(fruit);
-                    break;
-                case "Q":
-                    quitList(scan);
-                    break;
+            String menu = InputHelper.getRegExString(scan, "Options: \nA  -  Add an item to the list    \nD  -  Delete an item from the list   \nP  -  Print the list    \nQ  -  Quit the program", "[AaDdPpQq]");
+            if (menu.equalsIgnoreCase("A")) {
+                addList(scan, fruit);
+            }
+            else if (menu.equalsIgnoreCase("D")) {
+                deleteList(scan, fruit);
+            }
+            else if (menu.equalsIgnoreCase("P")) {
+                printList(fruit);
+            }
+            else if (menu.equalsIgnoreCase("Q")) {
+                playAgain = quitList(scan);
             }
 
-        } while (playAgain = false);
+        } while (playAgain);
     }
 
 
@@ -50,10 +47,8 @@ public class ListMaker {
         }
     }
 
-    private static void quitList(Scanner scan) {
+    private static boolean quitList(Scanner scan) {
         boolean quit = InputHelper.getYNConfirm(scan, "Are you sure you want to quit? [Y/N]");
-        if (quit) {
-            System.exit(0);
-        }
+        return quit;
     }
 }
