@@ -7,11 +7,12 @@ public class ListMaker {
     private static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         boolean playAgain = true;
+        String menu;
 
         fruit.addAll(Arrays.asList("Apple", "Banana", "Pear", "Strawberry", "Blueberry", "Grape", "Peach", "Pineapple", "Orange", "Watermelon", "Mango", "Kiwi", "Coconut", "Cherry", "Apricot", "Lemon"));
         printList();
         do {
-            String menu = InputHelper.getRegExString(scan, "Options: \nA  -  Add an item to the list    \nD  -  Delete an item from the list   \nP  -  Print the list    \nQ  -  Quit the program", "[AaDdPpQq]");
+            menu = InputHelper.getRegExString(scan, "Options: \nA  -  Add an item to the list    \nD  -  Delete an item from the list   \nP  -  Print the list    \nQ  -  Quit the program", "[AaDdPpQq]");
             if (menu.equalsIgnoreCase("A")) {
                 addList();
             }
